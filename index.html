@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesorías Jurídicas Integrales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-pattern {
+            background-color: #8B4513;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a05a2c' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8B4513;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+
+        /* Definición de colores personalizados */
+        .bg-warm-brown {
+            background-color: #8B4513;
+        }
+        .bg-warm-light {
+            background-color: #F5F0E6;
+        }
+        .bg-warm-dark {
+            background-color: #5D3A1A;
+        }
+        .text-warm-brown {
+            color: #8B4513;
+        }
+        .text-warm-dark {
+            color: #5D3A1A;
+        }
+        .border-warm-brown {
+            border-color: #8B4513;
+        }
+        .hover\:bg-warm-dark:hover {
+            background-color: #5D3A1A;
+        }
+        .hover\:text-warm-brown:hover {
+            color: #8B4513;
+        }
+        .bg-warm-accent {
+            background-color: #D2B48C;
+        }
+        .text-warm-accent {
+            color: #D2B48C;
+        }
+    </style>
+</head>
+<body class="bg-warm-light">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="h-10 w-10 text-warm-brown" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L1 21h22L12 2zm0 4.6L19.1 19H4.9L12 6.6z"/>
+                    <path d="M12 15c-.8 0-1.5.7-1.5 1.5S11.2 18 12 18s1.5-.7 1.5-1.5S12.8 15 12 15z"/>
+                    <path d="M11 10h2v4h-2z"/>
+                </svg>
+                <span class="ml-3 text-xl font-bold text-warm-brown">Asesorías Jurídicas Integrales</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#inicio" class="nav-link active text-warm-brown font-medium">Inicio</a>
+                <a href="#servicios" class="nav-link text-gray-600 hover:text-warm-brown font-medium">Servicios</a>
+                <a href="#sobre-mi" class="nav-link text-gray-600 hover:text-warm-brown font-medium">Sobre Mí</a>
+                <a href="#testimonios" class="nav-link text-gray-600 hover:text-warm-brown font-medium">Testimonios</a>
+                <a href="#contacto" class="nav-link text-gray-600 hover:text-warm-brown font-medium">Contacto</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-warm-brown focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#inicio" class="block px-3 py-2 text-warm-brown font-medium">Inicio</a>
+                <a href="#servicios" class="block px-3 py-2 text-gray-600 hover:text-warm-brown font-medium">Servicios</a>
+                <a href="#sobre-mi" class="block px-3 py-2 text-gray-600 hover:text-warm-brown font-medium">Sobre Mí</a>
+                <a href="#testimonios" class="block px-3 py-2 text-gray-600 hover:text-warm-brown font-medium">Testimonios</a>
+                <a href="#contacto" class="block px-3 py-2 text-gray-600 hover:text-warm-brown font-medium">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-pattern text-white">
+        <div class="container mx-auto px-4 py-20 md:py-32">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Soluciones Legales para su Empresa</h1>
+                <p class="text-xl md:text-2xl mb-10">Asesoría jurídica integral con enfoque en resultados para empresas y organizaciones</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#servicios" class="bg-white text-warm-brown hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">Nuestros Servicios</a>
+                    <a href="#contacto" class="bg-transparent hover:bg-warm-dark border-2 border-white font-bold py-3 px-8 rounded-lg transition duration-300">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-4">Nuestros Servicios</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ofrecemos asesoría jurídica especializada para empresas y organizaciones, con un enfoque integral y personalizado para cada cliente.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="service-icon bg-warm-accent text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h6v4H7V5zm8 8v2h1v1H4v-1h1v-2a1 1 0 011-1h8a1 1 0 011 1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-3 text-center">Consultoría Corporativa</h3>
+                    <p class="text-gray-600 text-center">Asesoramiento legal especializado para empresas en todas las etapas de su desarrollo, desde la constitución hasta operaciones complejas.</p>
+                    <div class="mt-6 text-center">
+                        <button class="text-warm-brown font-medium hover:text-warm-dark flex items-center justify-center mx-auto" onclick="showServiceDetails('consultoria')">
+                            Ver más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="service-icon bg-warm-accent text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-3 text-center">Diagnóstico Legal</h3>
+                    <p class="text-gray-600 text-center">Evaluación completa de la situación legal de su empresa para identificar riesgos y oportunidades de mejora en su estructura jurídica.</p>
+                    <div class="mt-6 text-center">
+                        <button class="text-warm-brown font-medium hover:text-warm-dark flex items-center justify-center mx-auto" onclick="showServiceDetails('diagnostico')">
+                            Ver más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="service-icon bg-warm-accent text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-3 text-center">Asesorías Continuas</h3>
+                    <p class="text-gray-600 text-center">Acompañamiento legal permanente para su empresa, con atención personalizada y respuesta oportuna a sus consultas legales.</p>
+                    <div class="mt-6 text-center">
+                        <button class="text-warm-brown font-medium hover:text-warm-dark flex items-center justify-center mx-auto" onclick="showServiceDetails('asesorias')">
+                            Ver más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="service-icon bg-warm-accent text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-3 text-center">Litigios y Representación Judicial</h3>
+                    <p class="text-gray-600 text-center">Defensa de sus intereses en procesos judiciales y administrativos, con un enfoque estratégico y orientado a resultados.</p>
+                    <div class="mt-6 text-center">
+                        <button class="text-warm-brown font-medium hover:text-warm-dark flex items-center justify-center mx-auto" onclick="showServiceDetails('litigios')">
+                            Ver más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="service-icon bg-warm-accent text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-3 text-center">Asesoría Contractual y RRHH</h3>
+                    <p class="text-gray-600 text-center">Elaboración y revisión de contratos comerciales y laborales, así como asesoramiento en materia de recursos humanos.</p>
+                    <div class="mt-6 text-center">
+                        <button class="text-warm-brown font-medium hover:text-warm-dark flex items-center justify-center mx-auto" onclick="showServiceDetails('contractual')">
+                            Ver más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Why Choose Us -->
+                <div class="service-card bg-warm-brown text-white rounded-lg p-8">
+                    <h3 class="text-xl font-bold mb-4 text-center">¿Por qué elegirnos?</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Experiencia en asesoría corporativa</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Atención personalizada</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Enfoque preventivo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Soluciones integrales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Compromiso con resultados</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="py-20 bg-warm-light">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <svg class="w-64 h-64 mx-auto lg:mx-0 text-warm-brown" viewBox="0 0 200 200" fill="currentColor">
+                        <circle cx="100" cy="70" r="50" />
+                        <rect x="35" y="120" width="130" height="80" rx="10" />
+                    </svg>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6">Sobre Mí</h2>
+                    <p class="text-gray-600 mb-4">Soy un abogado consultor corporativo con amplia experiencia en asesoría legal para empresas y organizaciones. Mi enfoque se centra en proporcionar soluciones jurídicas integrales que se adapten a las necesidades específicas de cada cliente.</p>
+                    <p class="text-gray-600 mb-6">Mi formación académica y experiencia profesional me permiten ofrecer un servicio de alta calidad, con un profundo conocimiento del derecho empresarial y una visión estratégica para la resolución de problemas legales.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <h4 class="font-bold text-warm-brown mb-2">Formación</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• Licenciado en Derecho</li>
+                                <li>• Máster en Derecho Empresarial</li>
+                                <li>• Especialización en Derecho Corporativo</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warm-brown mb-2">Experiencia</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• 10+ años en consultoría legal</li>
+                                <li>• Asesor de empresas nacionales</li>
+                                <li>• Experto en litigios corporativos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#contacto" class="inline-block bg-warm-brown hover:bg-warm-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">Contáctame</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-4">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">La satisfacción de nuestros clientes es nuestra mejor carta de presentación. Conoce las experiencias de quienes han confiado en nuestros servicios.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 flex">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"La asesoría legal que recibimos fue fundamental para el crecimiento de nuestra empresa. Su enfoque preventivo nos ha permitido evitar problemas legales y tomar decisiones más informadas."</p>
+                    <div class="flex items-center">
+                        <div class="bg-warm-accent text-white rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="font-bold">MC</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warm-brown">María Castillo</h4>
+                            <p class="text-gray-600 text-sm">Directora General, Innovatech S.A.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 flex">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Su representación en un litigio complejo fue excepcional. Gracias a su estrategia y conocimiento, logramos un resultado favorable que superó nuestras expectativas."</p>
+                    <div class="flex items-center">
+                        <div class="bg-warm-accent text-white rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="font-bold">JR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warm-brown">Javier Rodríguez</h4>
+                            <p class="text-gray-600 text-sm">Gerente Financiero, Grupo Constructor Alfa</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-warm-light rounded-lg p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 flex">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"El diagnóstico legal que realizaron para nuestra empresa fue muy completo y nos permitió identificar áreas de mejora que no habíamos considerado. Su asesoría continua ha sido invaluable."</p>
+                    <div class="flex items-center">
+                        <div class="bg-warm-accent text-white rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="font-bold">AL</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warm-brown">Ana López</h4>
+                            <p class="text-gray-600 text-sm">CEO, Distribuidora Comercial del Sur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-warm-brown text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contáctenos</h2>
+                <p class="max-w-2xl mx-auto">Estamos listos para ayudarle con sus necesidades legales. Complete el formulario y nos pondremos en contacto con usted a la brevedad.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8 md:p-12 bg-warm-light">
+                            <h3 class="text-2xl font-bold text-warm-brown mb-6">Información de Contacto</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-warm-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-warm-brown mb-1">Dirección</h4>
+                                        <p class="text-gray-600">Av. Principal 123, Oficina 456<br>Ciudad Empresarial</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-warm-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-warm-brown mb-1">Teléfono</h4>
+                                        <p class="text-gray-600">+123 456 7890</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-warm-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-warm-brown mb-1">Email</h4>
+                                        <p class="text-gray-600">contacto@asesoriajuridica.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-warm-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-warm-brown mb-1">Horario</h4>
+                                        <p class="text-gray-600">Lunes a Viernes: 9:00 - 18:00<br>Sábado: 9:00 - 13:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-warm-brown mb-6">Envíenos un mensaje</h3>
+                            
+                            <form id="contact-form" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 font-medium mb-2">Nombre completo</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-brown" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Correo electrónico</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-brown" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Teléfono</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-brown">
+                                </div>
+                                
+                                <div>
+                                    <label for="service" class="block text-gray-700 font-medium mb-2">Servicio de interés</label>
+                                    <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-brown">
+                                        <option value="">Seleccione un servicio</option>
+                                        <option value="consultoria">Consultoría Corporativa</option>
+                                        <option value="diagnostico">Diagnóstico Legal</option>
+                                        <option value="asesorias">Asesorías Continuas</option>
+                                        <option value="litigios">Litigios y Representación Judicial</option>
+                                        <option value="contractual">Asesoría Contractual y RRHH</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-brown" required></textarea>
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" class="w-full bg-warm-brown hover:bg-warm-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">Enviar mensaje</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L1 21h22L12 2zm0 4.6L19.1 19H4.9L12 6.6z"/>
+                            <path d="M12 15c-.8 0-1.5.7-1.5 1.5S11.2 18 12 18s1.5-.7 1.5-1.5S12.8 15 12 15z"/>
+                            <path d="M11 10h2v4h-2z"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-bold">Asesorías Jurídicas Integrales</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">Soluciones legales integrales para empresas y organizaciones, con un enfoque personalizado y orientado a resultados.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-gray-300 hover:text-white transition duration-300">Inicio</a></li>
+                        <li><a href="#servicios" class="text-gray-300 hover:text-white transition duration-300">Servicios</a></li>
+                        <li><a href="#sobre-mi" class="text-gray-300 hover:text-white transition duration-300">Sobre Mí</a></li>
+                        <li><a href="#testimonios" class="text-gray-300 hover:text-white transition duration-300">Testimonios</a></li>
+                        <li><a href="#contacto" class="text-gray-300 hover:text-white transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Boletín informativo</h3>
+                    <p class="text-gray-300 mb-4">Suscríbase a nuestro boletín para recibir actualizaciones legales y noticias relevantes para su empresa.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su correo electrónico" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-900">
+                        <button type="submit" class="bg-warm-brown hover:bg-warm-accent text-white px-4 py-2 rounded-r-lg transition duration-300">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 Asesorías Jurídicas Integrales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Details Modal -->
+    <div id="service-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="modal-title" class="text-2xl font-bold text-warm-brown"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modal-content" class="text-gray-600"></div>
+                <div class="mt-8 text-center">
+                    <a href="#contacto" onclick="closeModal()" class="inline-block bg-warm-brown hover:bg-warm-dark text-white font-bold py-2 px-6 rounded-lg transition duration-300">Solicitar este servicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Service details modal
+        const serviceDetails = {
+            consultoria: {
+                title: "Consultoría Corporativa",
+                content: `
+                    <p class="mb-4">Nuestra consultoría corporativa ofrece asesoramiento legal especializado para empresas en todas las etapas de su desarrollo, desde la constitución hasta operaciones complejas.</p>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Servicios incluidos:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Constitución de sociedades y estructuración corporativa</li>
+                        <li>Gobierno corporativo y cumplimiento normativo</li>
+                        <li>Fusiones, adquisiciones y reorganizaciones empresariales</li>
+                        <li>Asesoramiento en operaciones comerciales</li>
+                        <li>Protección de activos empresariales</li>
+                        <li>Planificación fiscal corporativa</li>
+                    </ul>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Beneficios:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Minimización de riesgos legales</li>
+                        <li>Optimización de la estructura corporativa</li>
+                        <li>Cumplimiento de obligaciones legales</li>
+                        <li>Protección de los intereses de la empresa</li>
+                        <li>Asesoramiento estratégico para la toma de decisiones</li>
+                    </ul>
+                `
+            },
+            diagnostico: {
+                title: "Diagnóstico Legal",
+                content: `
+                    <p class="mb-4">Nuestro servicio de diagnóstico legal ofrece una evaluación completa de la situación legal de su empresa para identificar riesgos y oportunidades de mejora en su estructura jurídica.</p>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">El proceso incluye:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Análisis de la estructura corporativa</li>
+                        <li>Revisión de contratos y documentos legales</li>
+                        <li>Evaluación de cumplimiento normativo</li>
+                        <li>Identificación de riesgos legales</li>
+                        <li>Análisis de procesos internos</li>
+                        <li>Revisión de políticas y procedimientos</li>
+                    </ul>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Entregables:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Informe detallado de hallazgos</li>
+                        <li>Recomendaciones específicas para cada área</li>
+                        <li>Plan de acción priorizado</li>
+                        <li>Propuesta de implementación de mejoras</li>
+                        <li>Seguimiento de las acciones correctivas</li>
+                    </ul>
+                `
+            },
+            asesorias: {
+                title: "Asesorías Continuas",
+                content: `
+                    <p class="mb-4">Nuestro servicio de asesorías continuas ofrece acompañamiento legal permanente para su empresa, con atención personalizada y respuesta oportuna a sus consultas legales.</p>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Modalidades disponibles:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Asesoría mensual con horas predefinidas</li>
+                        <li>Asesoría por proyecto específico</li>
+                        <li>Asesoría integral con dedicación exclusiva</li>
+                        <li>Asesoría para startups y emprendimientos</li>
+                    </ul>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Servicios incluidos:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Consultas ilimitadas por correo electrónico</li>
+                        <li>Reuniones periódicas de seguimiento</li>
+                        <li>Revisión de documentos legales</li>
+                        <li>Elaboración de informes y opiniones legales</li>
+                        <li>Actualización sobre cambios normativos relevantes</li>
+                        <li>Participación en reuniones estratégicas</li>
+                    </ul>
+                `
+            },
+            litigios: {
+                title: "Litigios y Representación Judicial",
+                content: `
+                    <p class="mb-4">Nuestro servicio de litigios y representación judicial ofrece defensa de sus intereses en procesos judiciales y administrativos, con un enfoque estratégico y orientado a resultados.</p>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Áreas de práctica:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Litigios comerciales y civiles</li>
+                        <li>Disputas contractuales</li>
+                        <li>Conflictos societarios</li>
+                        <li>Procesos administrativos</li>
+                        <li>Arbitraje y mediación</li>
+                        <li>Cobranza judicial</li>
+                    </ul>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Nuestro enfoque:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Análisis preliminar del caso</li>
+                        <li>Evaluación de riesgos y probabilidades de éxito</li>
+                        <li>Diseño de estrategia procesal</li>
+                        <li>Representación ante tribunales y autoridades</li>
+                        <li>Seguimiento permanente del proceso</li>
+                        <li>Búsqueda de soluciones alternativas cuando sea conveniente</li>
+                    </ul>
+                `
+            },
+            contractual: {
+                title: "Asesoría Contractual y RRHH",
+                content: `
+                    <p class="mb-4">Nuestro servicio de asesoría contractual y recursos humanos ofrece elaboración y revisión de contratos comerciales y laborales, así como asesoramiento en materia de recursos humanos.</p>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Servicios contractuales:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Elaboración de contratos comerciales</li>
+                        <li>Revisión y negociación de contratos</li>
+                        <li>Acuerdos de confidencialidad</li>
+                        <li>Contratos de distribución y agencia</li>
+                        <li>Contratos de prestación de servicios</li>
+                        <li>Términos y condiciones para clientes</li>
+                    </ul>
+                    
+                    <h4 class="font-bold text-warm-brown mb-2 mt-4">Servicios de RRHH:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Contratos laborales y políticas de empresa</li>
+                        <li>Procedimientos disciplinarios</li>
+                        <li>Terminación de relaciones laborales</li>
+                        <li>Cumplimiento de normativa laboral</li>
+                        <li>Asesoramiento en conflictos laborales</li>
+                        <li>Auditorías laborales preventivas</li>
+                    </ul>
+                `
+            }
+        };
+        
+        function showServiceDetails(serviceId) {
+            const modal = document.getElementById('service-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            
+            modalTitle.textContent = serviceDetails[serviceId].title;
+            modalContent.innerHTML = serviceDetails[serviceId].content;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('service-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('service-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For this demo, we'll just show an alert
+            alert('¡Gracias por contactarnos! Nos pondremos en contacto con usted a la brevedad.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Highlight active nav link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100 && window.pageYOffset < sectionTop + sectionHeight - 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96565ecc8036e9aa',t:'MTc1MzU1ODg0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
